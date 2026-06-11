@@ -65,27 +65,31 @@
   // ── Animation
   const imgs = Array.from(container.querySelectorAll('img'));
   const pieces = imgs.map(() => {
-    const flyOff = Math.random() > 0.4;
+    // Each piece starts moving at a random point in the first 40% of the scroll,
+    // but ALL pieces reach localProgress=1 exactly at globalProgress=1.
+    const delay = Math.random() * 0.4;
     return {
-      spreadX: -(Math.random() * 80),
-      rotate:  (Math.random() - 0.5) * 28,
-      delay:   Math.random() * 0.5,
-      speed:   0.8 + Math.random() * 1.2,
-      maxLift: flyOff ? window.innerHeight + 300 : 150 + Math.random() * (window.innerHeight * 0.6)
+      spreadX: (Math.random() - 0.5) * 300,  // scatter left and right
+      spreadY: -100 - Math.random() * 400,    // always fly upward, varying heights
+      rotate:  (Math.random() - 0.5) * 720,   // full spin for some pieces
+      delay,
+      speed: 1 / (1 - delay)                  // guarantees finish at globalProgress=1
     };
   });
 
   let rafPending = false;
 
   function applyTransforms() {
-    const scrollTop     = window.scrollY;
-    const maxScroll     = document.body.scrollHeight - window.innerHeight;
+    const scrollTop      = window.scrollY;
+    const maxScroll      = document.body.scrollHeight - window.innerHeight;
     const globalProgress = Math.min(scrollTop / maxScroll, 1);
 
     imgs.forEach((img, i) => {
       const p = pieces[i];
-      const localProgress = Math.min(Math.max(((globalProgress - p.delay) / (1 - p.delay)) * p.speed, 0), 1);
-      img.style.transform = `translate(${p.spreadX * localProgress}px, ${-localProgress * p.maxLift}px) rotate(${p.rotate * localProgress * 2}deg)`;
+      const localProgress = Math.min(Math.max((globalProgress - p.delay) * p.speed, 0), 1);
+      const eased = 1 - Math.pow(1 - localProgress, 2);  // ease-out
+      img.style.transform = `translate(${p.spreadX * eased}px, ${p.spreadY * eased}px) rotate(${p.rotate * eased}deg)`;
+      img.style.opacity = String(1 - eased * eased);      // fade as they scatter
     });
 
     rafPending = false;
