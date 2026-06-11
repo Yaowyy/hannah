@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>forget me not</title>
-  
-  
-  <link rel="stylesheet" href="https://use.typekit.net/qmj4lyf.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,7 +15,7 @@
     }
 
     body {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       background: #f0e8e0;
       color: #1a1a1a;
     }
@@ -54,7 +54,7 @@
     }
 
     .nav-links a {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: 0.72rem;
       letter-spacing: 0.04em;
       text-transform: lowercase;
@@ -70,6 +70,11 @@
     .nav-links a:hover {
       background: #c8d9e0;
       transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { gap: 0.4rem; }
+      .nav-links a { font-size: 0.58rem; padding: 0.5rem 1rem; }
     }
 
     /* ── HERO ── */
@@ -93,8 +98,8 @@
     }
 
     .brand-name {
-      font-family: 'slight-chance', sans-serif;
-      font-size: clamp(3rem, 8vw, 9rem);
+      font-family: 'Boogaloo', cursive;
+      font-size: clamp(3.5rem, 12vw, 14rem);
       color: #ffffff;
       line-height: 0.9;
       letter-spacing: -0.01em;
@@ -102,7 +107,7 @@
     }
 
     .tagline {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: clamp(0.65rem, 1.4vw, 1.3rem);
       color: #ffffff;
       letter-spacing: 0.04em;
@@ -139,7 +144,7 @@
     }
 
     .about-card h2 {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: clamp(1.6rem, 4vw, 2.2rem);
       font-weight: 400;
       letter-spacing: 0.02em;
@@ -147,7 +152,7 @@
     }
 
     .about-card p {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: 0.82rem;
       line-height: 1.85;
       letter-spacing: 0.02em;
@@ -161,7 +166,7 @@
     }
 
     .cta-btn {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: 0.9rem;
       letter-spacing: 0.04em;
       padding: 0.75rem 2.5rem;
@@ -188,7 +193,7 @@
     }
 
     .products-section h2 {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: clamp(1.6rem, 4vw, 2.2rem);
       font-weight: 400;
       letter-spacing: 0.02em;
@@ -241,6 +246,12 @@
       justify-content: center;
     }
 
+    @media (max-width: 480px) {
+      .products-section { padding: 3rem 5%; }
+      .products-grid { gap: 0.8rem; }
+      .products-grid-wrap { padding: 1.2rem; border-radius: 1.2rem; }
+    }
+
     @media (min-width: 1025px) and (max-width: 1919px) {
       .products-section h2 { font-size: 2.4rem; }
       .products-grid { gap: 1.5rem; }
@@ -280,14 +291,14 @@
     }
 
     .footer-brand-name {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Boogaloo', cursive;
       font-size: 2rem;
       color: #1a1a1a;
       line-height: 1;
     }
 
     .footer-col h4 {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.06em;
@@ -300,7 +311,7 @@
     }
 
     .footer-col ul li {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: 0.65rem;
       letter-spacing: 0.02em;
       margin-bottom: 0.4rem;
@@ -322,7 +333,7 @@
     }
 
     .join-row input {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: 0.6rem;
       border: none;
       border-bottom: 1px solid #333;
@@ -334,7 +345,7 @@
     }
 
     .join-row button {
-      font-family: 'slight-chance', sans-serif;
+      font-family: 'Space Mono', monospace;
       font-size: 0.6rem;
       padding: 0.3rem 0.8rem;
       border: 1px solid #1a1a1a;
@@ -344,6 +355,26 @@
     }
 
     .join-row button:hover { background: rgba(0,0,0,0.08); }
+
+    /* ── PHONE (≤480px) ── */
+    @media (max-width: 480px) {
+      .hero { padding: 0 5% 12% 5%; min-height: 60vh; }
+      .hero-text-block { max-width: 95%; }
+      .about-card { padding: 2rem 1.5rem; border-radius: 1.2rem; }
+      .about-card p { font-size: 0.75rem; }
+      footer { grid-template-columns: 1fr; gap: 1.8rem; padding: 2rem 5% 8rem; }
+      .footer-flower { width: 52px; height: 52px; }
+      .footer-brand-name { font-size: 1.5rem; }
+      .footer-col h4 { font-size: 0.7rem; }
+      .footer-col ul li, .footer-col p { font-size: 0.65rem; }
+    }
+
+    /* ── TABLET / SMALL MONITOR (481px–1024px) ── */
+    @media (min-width: 481px) and (max-width: 1024px) {
+      .hero-text-block { max-width: 70%; }
+      footer { grid-template-columns: auto 1fr 1fr; gap: 2rem; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
 
     /* ── LARGE MONITOR (1025px–1919px) ── */
     @media (min-width: 1025px) and (max-width: 1919px) {
@@ -404,6 +435,7 @@
       width: 100%;
       height: 100%;
       mix-blend-mode: multiply;
+      will-change: transform;
     }
   </style>
 </head>
@@ -597,29 +629,31 @@
 </div>
 
 <script>
-  if (window.innerWidth < 1025) {
-    window.location.replace('mobile.html');
-  }
-</script>
-<script>
   (function() {
     const container = document.getElementById('flower-container');
-    const imgs = Array.from(container.querySelectorAll('img'));
-    const total = imgs.length;
 
-    const pieces = imgs.map((_, i) => {
-      const delay = Math.random() * 0.5;
+    // ── Optimisation 1: use every other fragment (halves DOM nodes & network requests)
+    const allImgs = Array.from(container.querySelectorAll('img'));
+    allImgs.forEach((img, i) => {
+      if (i % 2 !== 0) img.remove();
+    });
+    const imgs = Array.from(container.querySelectorAll('img'));
+
+    const pieces = imgs.map(() => {
       const flyOff = Math.random() > 0.4;
       return {
         spreadX: -(Math.random() * 80),
         rotate: (Math.random() - 0.5) * 28,
-        delay: delay,
+        delay: Math.random() * 0.5,
         speed: 0.8 + Math.random() * 1.2,
         maxLift: flyOff ? window.innerHeight + 300 : 150 + Math.random() * (window.innerHeight * 0.6)
       };
     });
 
-    function onScroll() {
+    // ── Optimisation 2: rAF throttle — only update once per screen repaint
+    let rafPending = false;
+
+    function applyTransforms() {
       const scrollTop = window.scrollY;
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const globalProgress = Math.min(scrollTop / maxScroll, 1);
@@ -627,17 +661,24 @@
       imgs.forEach((img, i) => {
         const p = pieces[i];
         const localProgress = Math.min(Math.max(((globalProgress - p.delay) / (1 - p.delay)) * p.speed, 0), 1);
-
         const tx = p.spreadX * localProgress;
         const ty = -localProgress * p.maxLift;
         const rot = p.rotate * localProgress * 2;
-
         img.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg)`;
       });
+
+      rafPending = false;
+    }
+
+    function onScroll() {
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(applyTransforms);
+      }
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    applyTransforms();
   })();
 </script>
 </body>
