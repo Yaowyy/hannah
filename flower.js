@@ -75,7 +75,7 @@
     const isLinger = lingerSet.has(i);
     return {
       spreadX:      isLinger ? (Math.random() - 0.5) * 120  : (Math.random() - 0.5) * 600,
-      spreadY:      isLinger ? -20 - Math.random() * 80      : -300 - Math.random() * 600,
+      spreadY:      isLinger ? -20 - Math.random() * 80      : -800 - Math.random() * 600,
       rotate:       isLinger ? (Math.random() - 0.5) * 45    : (Math.random() - 0.5) * 720,
       finalOpacity: isLinger ? 0.85 + Math.random() * 0.15   : 0,
       delay,
