@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>forget me not</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Space Mono', monospace;
+      background: #f0e8e0;
+      color: #1a1a1a;
+    }
+
+    .page-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    /* ── TV (1920px+) ── */
+    @media (min-width: 1920px) {
+      .page-wrapper { max-width: 1100px; }
+    }
+    @media (min-width: 2560px) {
+      .page-wrapper { max-width: 1400px; }
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      padding: 1.4rem 5%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 0.6rem 1.8rem;
+      background: #dce8ed;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      background: #c8d9e0;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { gap: 0.4rem; }
+      .nav-links a { font-size: 0.58rem; padding: 0.5rem 1rem; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-image: url('unit_8_web_title_bkg.png');
+      background-size: cover;
+      background-position: center top;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 0 5% 8% 5%;
+    }
+
+    .hero-text-block {
+      text-align: right;
+      max-width: 60%;
+    }
+
+    .brand-name {
+      font-family: 'Boogaloo', cursive;
+      font-size: clamp(3.5rem, 12vw, 14rem);
+      color: #ffffff;
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      text-shadow: 2px 4px 12px rgba(0,0,0,0.18);
+    }
+
+    .tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(0.65rem, 1.4vw, 1.3rem);
+      color: #ffffff;
+      letter-spacing: 0.04em;
+      margin-top: 1.2rem;
+      text-shadow: 1px 2px 6px rgba(0,0,0,0.25);
+    }
+
+    /* ── ABOUT SECTION ── */
+    .about-section {
+      position: relative;
+      width: 100%;
+      min-height: 85vh;
+      background-image: url('unit_8_web_how_it_works_bkg.png');
+      background-size: cover;
+      background-position: center bottom;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      transform: scaleX(-1);
+    }
+
+    .about-section > * {
+      transform: scaleX(-1);
+    }
+
+    .about-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 2rem;
+      padding: 3rem 3.5rem;
+      max-width: 580px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .about-card h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.6rem;
+    }
+
+    .about-card p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.85;
+      letter-spacing: 0.02em;
+      text-align: justify;
+    }
+
+    .cta-wrap {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .cta-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      padding: 0.75rem 2.5rem;
+      border: 2px solid #1a1a1a;
+      border-radius: 999px;
+      background: rgba(176,210,220,0.45);
+      color: #1a1a1a;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-btn:hover {
+      background: rgba(176,210,220,0.75);
+      transform: translateY(-2px);
+    }
+
+    /* ── MY PRODUCTS SECTION ── */
+    .products-section {
+      width: 100%;
+      background: #f0e8e0;
+      padding: 4rem 5%;
+    }
+
+    .products-section h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .products-grid-wrap {
+      background: #c8dfe8;
+      border-radius: 2rem;
+      padding: 2rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-card.empty {
+      background: rgba(255,255,255,0.6);
+    }
+
+    .products-cta-wrap {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+      .products-section { padding: 3rem 5%; }
+      .products-grid { gap: 0.8rem; }
+      .products-grid-wrap { padding: 1.2rem; border-radius: 1.2rem; }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1919px) {
+      .products-section h2 { font-size: 2.4rem; }
+      .products-grid { gap: 1.5rem; }
+    }
+
+    @media (min-width: 1920px) {
+      .products-section { padding: 4rem 5%; }
+      .products-section h2 { font-size: 2.2rem; margin-bottom: 2rem; }
+      .products-grid { gap: 1.2rem; }
+      .products-grid-wrap { padding: 2rem; border-radius: 2rem; }
+    }
+
+    @media (min-width: 2560px) {
+      .products-section h2 { font-size: 4rem; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #dce8ed;
+      padding: 3rem 5%;
+      display: grid;
+      grid-template-columns: auto 1fr 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-flower {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+
+    .footer-brand-name {
+      font-family: 'Boogaloo', cursive;
+      font-size: 2rem;
+      color: #1a1a1a;
+      line-height: 1;
+    }
+
+    .footer-col h4 {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+
+    .footer-col a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .footer-col a:hover { text-decoration: underline; }
+
+    .join-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      align-items: center;
+    }
+
+    .join-row input {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      border: none;
+      border-bottom: 1px solid #333;
+      background: transparent;
+      padding: 0.3rem 0;
+      flex: 1;
+      outline: none;
+      color: #333;
+    }
+
+    .join-row button {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid #1a1a1a;
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .join-row button:hover { background: rgba(0,0,0,0.08); }
+
+    /* ── PHONE (≤480px) ── */
+    @media (max-width: 480px) {
+      .hero { padding: 0 5% 12% 5%; min-height: 60vh; }
+      .hero-text-block { max-width: 95%; }
+      .about-card { padding: 2rem 1.5rem; border-radius: 1.2rem; }
+      .about-card p { font-size: 0.75rem; }
+      footer { grid-template-columns: 1fr; gap: 1.8rem; padding: 2rem 5% 8rem; }
+      .footer-flower { width: 52px; height: 52px; }
+      .footer-brand-name { font-size: 1.5rem; }
+      .footer-col h4 { font-size: 0.7rem; }
+      .footer-col ul li, .footer-col p { font-size: 0.65rem; }
+    }
+
+    /* ── TABLET / SMALL MONITOR (481px–1024px) ── */
+    @media (min-width: 481px) and (max-width: 1024px) {
+      .hero-text-block { max-width: 70%; }
+      footer { grid-template-columns: auto 1fr 1fr; gap: 2rem; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    /* ── LARGE MONITOR (1025px–1919px) ── */
+    @media (min-width: 1025px) and (max-width: 1919px) {
+      .about-card { max-width: 640px; }
+      .about-card h2 { font-size: 2.4rem; }
+      .about-card p { font-size: 0.9rem; }
+      footer { padding: 3.5rem 6%; gap: 3rem; }
+      .footer-flower { width: 88px; height: 88px; }
+      .footer-brand-name { font-size: 2.4rem; }
+      .footer-col h4 { font-size: 0.82rem; }
+      .footer-col ul li { font-size: 0.72rem; }
+    }
+
+    /* ── TV (1920px+) ── */
+    @media (min-width: 1920px) {
+      .hero { min-height: 70vh; }
+      .about-card { max-width: 620px; padding: 3rem 3.5rem; border-radius: 2rem; }
+      .about-card h2 { font-size: 2.2rem; margin-bottom: 1.6rem; }
+      .about-card p { font-size: 0.88rem; line-height: 1.9; }
+      .cta-btn { font-size: 0.9rem; padding: 0.75rem 2.5rem; }
+      footer { padding: 3rem 5%; gap: 2.5rem; }
+      .footer-flower { width: 72px; height: 72px; }
+      .footer-brand-name { font-size: 2rem; }
+      .footer-col h4 { font-size: 0.72rem; margin-bottom: 0.9rem; }
+      .footer-col ul li { font-size: 0.65rem; margin-bottom: 0.4rem; }
+      .footer-col p { font-size: 0.65rem !important; }
+      .join-row input, .join-row button { font-size: 0.6rem; }
+    }
+
+    /* ── 4K (2560px+) ── */
+    @media (min-width: 2560px) {
+      .about-card { max-width: 1100px; padding: 5rem 6rem; }
+      .about-card h2 { font-size: 4rem; }
+      .about-card p { font-size: 1.3rem; }
+      .cta-btn { font-size: 1.3rem; padding: 1.2rem 4rem; }
+      footer { gap: 5rem; padding: 5rem 6%; }
+      .footer-flower { width: 140px; height: 140px; }
+      .footer-brand-name { font-size: 3.8rem; }
+      .footer-col h4 { font-size: 1.2rem; }
+      .footer-col ul li { font-size: 1.05rem; }
+    }
+    /* ── FLOWER FRAGMENTS ── */
+    #flower-container {
+      position: fixed;
+      bottom: 1vw;
+      left: 1vw;
+      width: clamp(100px, 18vw, 260px);
+      height: clamp(100px, 18vw, 260px);
+      pointer-events: none;
+      z-index: 50;
+      overflow: visible;
+    }
+
+    #flower-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: multiply;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="#about">about us</a></li>
+        <li><a href="#products">products &amp; services</a></li>
+        <li><a href="contact.html">contact us</a></li>
+      </ul>
+    </nav>
+    <div class="hero-text-block">
+      <h1 class="brand-name">forget<br>me not</h1>
+      <p class="tagline">a second life to your broken ceramics</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-card">
+      <h2>about us</h2>
+      <p>We are designers focused on contributing to building a circular economy through sourcing our materials from disposed ceramic waste. We wanted to reimagine how materials can be used at different stages of its lifecycle. by piecing together these broken pieces, we hope to challenge what brokenness is, and promote this sentiment to reject consumerist culture and reflect on our attitudes towards disposal.</p>
+      <div class="cta-wrap">
+        <a href="#products" class="cta-btn">Get started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MY PRODUCTS -->
+  <section class="products-section" id="products">
+    <h2>products & services</h2>
+    <div class="products-grid-wrap">
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="unit_8_flower.png" alt="blue mosaic flower">
+        </div>
+        <div class="product-card">
+          <img src="unit_7_olive.png" alt="olive tree mosaic panel">
+        </div>
+        <div class="product-card empty"></div>
+        <div class="product-card empty"></div>
+      </div>
+    </div>
+    <div class="products-cta-wrap">
+      <a href="contact.html" class="cta-btn">contact us</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <img class="footer-flower" src="unit_8_flower.png" alt="forget me not flower logo">
+      <span class="footer-brand-name">forget<br>me not</span>
+    </div>
+
+    <div class="footer-col">
+      <h4>useful information</h4>
+      <ul>
+        <li><a href="terms.html">terms and conditions</a></li>
+        <li><a href="#">privacy policy</a></li>
+        <li><a href="#">payments &amp; commissions</a></li>
+        <li><a href="#">drop off &amp; delivery</a></li>
+        <li><a href="#">returns</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>join us!</h4>
+      <p style="font-size:0.65rem; margin-bottom:0.6rem; line-height:1.5;">sign up with your emails to recieve the lastest news, updates &amp; events from us!</p>
+      <div class="join-row">
+        <input type="email" placeholder="your@email.com">
+        <button>sign up</button>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>contacts</h4>
+      <ul>
+        <li><a href="mailto:forgetmenot@email.com">forgetmenot@email.com</a></li>
+        <li>020 6645 XXXX</li>
+      </ul>
+    </div>
+  </footer>
+
+</div><!-- /.page-wrapper -->
+<!-- FLOWER FRAGMENTS -->
+<div id="flower-container">
+  <img src="h_0000_fp1.png" data-index="0">
+  <img src="h_0001_fp2.png" data-index="1">
+  <img src="h_0002_fp3.png" data-index="2">
+  <img src="h_0003_fp4.png" data-index="3">
+  <img src="h_0004_fp5.png" data-index="4">
+  <img src="h_0005_fp6.png" data-index="5">
+  <img src="h_0006_fp7.png" data-index="6">
+  <img src="h_0007_fp8.png" data-index="7">
+  <img src="h_0008_fp9.png" data-index="8">
+  <img src="h_0009_fp10.png" data-index="9">
+  <img src="h_0010_fp11.png" data-index="10">
+  <img src="h_0011_fp12.png" data-index="11">
+  <img src="h_0012_fp13.png" data-index="12">
+  <img src="h_0013_fp14.png" data-index="13">
+  <img src="h_0014_fp15.png" data-index="14">
+  <img src="h_0015_fp16.png" data-index="15">
+  <img src="h_0016_fp17.png" data-index="16">
+  <img src="h_0017_fp18.png" data-index="17">
+  <img src="h_0018_fp19.png" data-index="18">
+  <img src="h_0019_fp20.png" data-index="19">
+  <img src="h_0020_fp21.png" data-index="20">
+  <img src="h_0021_fp22.png" data-index="21">
+  <img src="h_0022_fp23.png" data-index="22">
+  <img src="h_0023_fp24.png" data-index="23">
+  <img src="h_0024_fp25.png" data-index="24">
+  <img src="h_0025_fp26.png" data-index="25">
+  <img src="h_0026_fp27.png" data-index="26">
+  <img src="h_0027_fp28.png" data-index="27">
+  <img src="h_0028_fp29.png" data-index="28">
+  <img src="h_0029_fp30.png" data-index="29">
+  <img src="h_0030_fp31.png" data-index="30">
+  <img src="h_0031_fp32.png" data-index="31">
+  <img src="h_0032_fp33.png" data-index="32">
+  <img src="h_0033_fp34.png" data-index="33">
+  <img src="h_0034_fp35.png" data-index="34">
+  <img src="h_0035_fp36.png" data-index="35">
+  <img src="h_0036_fp37.png" data-index="36">
+  <img src="h_0037_fp38.png" data-index="37">
+  <img src="h_0038_fp39.png" data-index="38">
+  <img src="h_0039_fp40.png" data-index="39">
+  <img src="h_0040_fp41.png" data-index="40">
+  <img src="h_0041_fp42.png" data-index="41">
+  <img src="h_0042_fp43.png" data-index="42">
+  <img src="h_0043_fp44.png" data-index="43">
+  <img src="h_0044_fp45.png" data-index="44">
+  <img src="h_0045_fp46.png" data-index="45">
+  <img src="h_0046_fp47.png" data-index="46">
+  <img src="h_0047_fp48.png" data-index="47">
+  <img src="h_0048_fp49.png" data-index="48">
+  <img src="h_0049_fp50.png" data-index="49">
+  <img src="h_0050_fp51.png" data-index="50">
+  <img src="h_0051_fp52.png" data-index="51">
+  <img src="h_0052_fp53.png" data-index="52">
+  <img src="h_0053_fp54.png" data-index="53">
+  <img src="h_0054_fp55.png" data-index="54">
+  <img src="h_0055_fp56.png" data-index="55">
+  <img src="h_0056_fp57.png" data-index="56">
+  <img src="h_0057_fp58.png" data-index="57">
+  <img src="h_0058_fp59.png" data-index="58">
+  <img src="h_0059_fp60.png" data-index="59">
+  <img src="h_0060_fp61.png" data-index="60">
+  <img src="h_0061_fp62.png" data-index="61">
+  <img src="h_0062_fp63.png" data-index="62">
+  <img src="h_0063_fp64.png" data-index="63">
+  <img src="h_0064_fp65.png" data-index="64">
+  <img src="h_0065_fp66.png" data-index="65">
+  <img src="h_0066_fp67.png" data-index="66">
+  <img src="h_0067_fp68.png" data-index="67">
+  <img src="h_0068_fp69.png" data-index="68">
+  <img src="h_0069_fp70.png" data-index="69">
+  <img src="h_0070_fp71.png" data-index="70">
+  <img src="h_0071_fp72.png" data-index="71">
+  <img src="h_0072_fp73.png" data-index="72">
+  <img src="h_0073_fp74.png" data-index="73">
+  <img src="h_0074_fp75.png" data-index="74">
+  <img src="h_0075_fp76.png" data-index="75">
+  <img src="h_0076_fp77.png" data-index="76">
+  <img src="h_0077_fp78.png" data-index="77">
+  <img src="h_0078_fp79.png" data-index="78">
+  <img src="h_0079_fp80.png" data-index="79">
+  <img src="h_0080_fp81.png" data-index="80">
+  <img src="h_0081_fp82.png" data-index="81">
+  <img src="h_0082_fp83.png" data-index="82">
+  <img src="h_0083_fp84.png" data-index="83">
+  <img src="h_0084_fp85.png" data-index="84">
+  <img src="h_0085_fp86.png" data-index="85">
+  <img src="h_0086_fp87.png" data-index="86">
+  <img src="h_0087_fp88.png" data-index="87">
+  <img src="h_0088_fp89.png" data-index="88">
+  <img src="h_0089_fp90.png" data-index="89">
+  <img src="h_0090_fp91.png" data-index="90">
+  <img src="h_0091_fp92.png" data-index="91">
+  <img src="h_0092_fp93.png" data-index="92">
+  <img src="h_0093_fp94.png" data-index="93">
+  <img src="h_0094_fp95.png" data-index="94">
+  <img src="h_0095_fp96.png" data-index="95">
+  <img src="h_0096_fp97.png" data-index="96">
+  <img src="h_0097_fp98.png" data-index="97">
+</div>
+
+<script>
+  (function() {
+    const container = document.getElementById('flower-container');
+    const imgs = Array.from(container.querySelectorAll('img'));
+    const total = imgs.length;
+
+    const pieces = imgs.map((_, i) => {
+      const delay = Math.random() * 0.5;
+      const flyOff = Math.random() > 0.4;
+      return {
+        spreadX: -(Math.random() * 80),
+        rotate: (Math.random() - 0.5) * 28,
+        delay: delay,
+        speed: 0.8 + Math.random() * 1.2,
+        maxLift: flyOff ? window.innerHeight + 300 : 150 + Math.random() * (window.innerHeight * 0.6)
+      };
+    });
+
+    function onScroll() {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const globalProgress = Math.min(scrollTop / maxScroll, 1);
+
+      imgs.forEach((img, i) => {
+        const p = pieces[i];
+        const localProgress = Math.min(Math.max(((globalProgress - p.delay) / (1 - p.delay)) * p.speed, 0), 1);
+
+        const tx = p.spreadX * localProgress;
+        const ty = -localProgress * p.maxLift;
+        const rot = p.rotate * localProgress * 2;
+
+        img.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg)`;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+</body>
+</html>
