@@ -64,16 +64,22 @@
 
   // ── Animation
   const imgs = Array.from(container.querySelectorAll('img'));
-  const pieces = imgs.map(() => {
-    // Each piece starts moving at a random point in the first 40% of the scroll,
-    // but ALL pieces reach localProgress=1 exactly at globalProgress=1.
+  const LINGER_COUNT = 7; // exactly this many pieces stay visible at the end
+
+  // Pick lingerers randomly
+  const indices = imgs.map((_, i) => i).sort(() => Math.random() - 0.5);
+  const lingerSet = new Set(indices.slice(0, LINGER_COUNT));
+
+  const pieces = imgs.map((_, i) => {
     const delay = Math.random() * 0.4;
+    const isLinger = lingerSet.has(i);
     return {
-      spreadX: (Math.random() - 0.5) * 300,  // scatter left and right
-      spreadY: -100 - Math.random() * 400,    // always fly upward, varying heights
-      rotate:  (Math.random() - 0.5) * 720,   // full spin for some pieces
+      spreadX:      isLinger ? (Math.random() - 0.5) * 120  : (Math.random() - 0.5) * 600,
+      spreadY:      isLinger ? -20 - Math.random() * 80      : -300 - Math.random() * 600,
+      rotate:       isLinger ? (Math.random() - 0.5) * 45    : (Math.random() - 0.5) * 720,
+      finalOpacity: isLinger ? 0.85 + Math.random() * 0.15   : 0,
       delay,
-      speed: 1 / (1 - delay)                  // guarantees finish at globalProgress=1
+      speed: 1 / (1 - delay)
     };
   });
 
@@ -87,9 +93,9 @@
     imgs.forEach((img, i) => {
       const p = pieces[i];
       const localProgress = Math.min(Math.max((globalProgress - p.delay) * p.speed, 0), 1);
-      const eased = 1 - Math.pow(1 - localProgress, 2);  // ease-out
-      img.style.transform = `translate(${p.spreadX * eased}px, ${p.spreadY * eased}px) rotate(${p.rotate * eased}deg)`;
-      img.style.opacity = String(1 - eased * eased);      // fade as they scatter
+      const eased = 1 - Math.pow(1 - localProgress, 2); // ease-out
+      img.style.transform = 'translate(' + (p.spreadX * eased) + 'px, ' + (p.spreadY * eased) + 'px) rotate(' + (p.rotate * eased) + 'deg)';
+      img.style.opacity = String(1 - eased * (1 - p.finalOpacity));
     });
 
     rafPending = false;
