@@ -72,11 +72,6 @@
       transform: translateY(-2px);
     }
 
-    @media (max-width: 480px) {
-      .nav-links { gap: 0.4rem; }
-      .nav-links a { font-size: 0.58rem; padding: 0.5rem 1rem; }
-    }
-
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -246,12 +241,6 @@
       justify-content: center;
     }
 
-    @media (max-width: 480px) {
-      .products-section { padding: 3rem 5%; }
-      .products-grid { gap: 0.8rem; }
-      .products-grid-wrap { padding: 1.2rem; border-radius: 1.2rem; }
-    }
-
     @media (min-width: 1025px) and (max-width: 1919px) {
       .products-section h2 { font-size: 2.4rem; }
       .products-grid { gap: 1.5rem; }
@@ -355,26 +344,6 @@
     }
 
     .join-row button:hover { background: rgba(0,0,0,0.08); }
-
-    /* ── PHONE (≤480px) ── */
-    @media (max-width: 480px) {
-      .hero { padding: 0 5% 12% 5%; min-height: 60vh; }
-      .hero-text-block { max-width: 95%; }
-      .about-card { padding: 2rem 1.5rem; border-radius: 1.2rem; }
-      .about-card p { font-size: 0.75rem; }
-      footer { grid-template-columns: 1fr; gap: 1.8rem; padding: 2rem 5% 8rem; }
-      .footer-flower { width: 52px; height: 52px; }
-      .footer-brand-name { font-size: 1.5rem; }
-      .footer-col h4 { font-size: 0.7rem; }
-      .footer-col ul li, .footer-col p { font-size: 0.65rem; }
-    }
-
-    /* ── TABLET / SMALL MONITOR (481px–1024px) ── */
-    @media (min-width: 481px) and (max-width: 1024px) {
-      .hero-text-block { max-width: 70%; }
-      footer { grid-template-columns: auto 1fr 1fr; gap: 2rem; }
-      .footer-brand { grid-column: 1 / -1; }
-    }
 
     /* ── LARGE MONITOR (1025px–1919px) ── */
     @media (min-width: 1025px) and (max-width: 1919px) {
@@ -627,6 +596,11 @@
   <img src="h_0097_fp98.png" data-index="97">
 </div>
 
+<script>
+  if (window.innerWidth < 1025) {
+    window.location.replace('mobile.html');
+  }
+</script>
 <script>
   (function() {
     const container = document.getElementById('flower-container');
