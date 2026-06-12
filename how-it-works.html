@@ -55,30 +55,22 @@
       line-height: 1;
     }
 
-    /* ── SECTION 2: two text blocks + olive image ── */
-    .steps-section {
+    /* ── CONTENT SECTION ── */
+    .content-section {
       display: grid;
-      grid-template-columns: 55% 45%;
-      gap: 0;
-      padding: 3rem 0 2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 4rem 5%;
       align-items: start;
     }
 
-    .steps-left {
-      padding: 0 4% 0 5%;
+    .content-left {
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
     }
 
-    .step h3 {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 1.9rem;
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 0.6rem;
-    }
-    .step p {
+    .text-block p {
       font-family: 'slight-chance', sans-serif;
       font-size: 1rem;
       line-height: 1.75;
@@ -86,14 +78,23 @@
       text-align: justify;
     }
 
-    .steps-right {
-      padding: 0 5% 0 2%;
+    .text-block h3 {
+      font-family: 'slight-chance', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+
+    .content-right {
       display: flex;
       justify-content: center;
+      position: sticky;
+      top: 2rem;
     }
-    .steps-right img {
+
+    .content-right img {
       width: 100%;
-      max-width: 260px;
       display: block;
     }
 
@@ -179,20 +180,23 @@
       <h1 class="hero-title">how it works</h1>
     </section>
 
-    <!-- SECTION 2 -->
-    <section class="steps-section">
-      <div class="steps-left">
-        <div class="step">
+    <!-- CONTENT -->
+    <section class="content-section">
+      <div class="content-left">
+        <div class="text-block">
+          <p>We use broken ceramics and ceramic waste collected from pottery studios based around London, and turn them into mosaics and create beautiful a range of products from them. Not only are we open to commissions, we also offer a service to give a second life to your beloved broken ceramics.</p>
+        </div>
+        <div class="text-block">
           <h3>Got an idea? Let us know!</h3>
           <p>If you have a specific vision or creative direction, attach references, themes and requests at the checkout, and we will try best fit them to your liking.</p>
         </div>
-        <div class="step">
+        <div class="text-block">
           <h3>Drop them off and the rest is us.</h3>
           <p>Send us your nearest drop off location, we will provide a 305x305x305mm box where you can put up to 2kg of ceramics or any materials you would like to include. Any request of project or materials with dimensions exceeding the stated above, please contact us directly.</p>
         </div>
       </div>
-      <div class="steps-right">
-        <img src="unit_7_olive.png" alt="olive tree mosaic panel">
+      <div class="content-right">
+        <img src="olive_tree.png" alt="olive tree mosaic panel">
       </div>
     </section>
 
