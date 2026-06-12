@@ -36,101 +36,118 @@
     .nav-links a:hover { background: #c8d9e0; transform: translateY(-2px); }
     .nav-links a.active { background: #b0d2dc; }
 
-    /* ── HERO SECTION ── */
+    /* ── HERO ── */
     .hero-section {
       position: relative;
-      min-height: 100vh;
-      background-image: url('unit_8_web_how_it_works_bkg.png');
-      background-size: cover;
-      background-position: center top;
-      display: flex;
-      flex-direction: column;
-      padding: 0;
+      background: #f0e8e0;
+      /* top padding for navbar, then enough room for the image spread */
+      padding-top: 5rem;
+      padding-bottom: 0;
+      min-height: 56vw;
+      max-height: 520px;
+      overflow: visible;
     }
 
     .hero-title {
-      position: absolute;
-      top: 13%;
-      left: 5%;
       font-family: 'slight-chance', sans-serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-size: clamp(1.6rem, 3.2vw, 2.8rem);
       font-weight: 400;
       letter-spacing: -0.01em;
       color: #1a1a1a;
       line-height: 1;
+      position: relative;
       z-index: 2;
+      padding: 1.5rem 5% 0;
     }
 
-    /* ── CONTENT SECTIONS ── */
-    .content-section {
-      padding: 5rem 5%;
+    /* The hero image uses multiply to drop the black bg */
+    .hero-image-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .hero-image-wrap img {
+      display: block;
+      width: 80%;
+      max-width: 680px;
+      mix-blend-mode: multiply;
+      margin-top: -1rem;
+      /* shift left slightly so ceramics start from left edge */
+      margin-left: -2%;
+    }
+
+    /* ── CONTENT AREA ── */
+    .content-area {
+      padding: 0 5% 0;
+      position: relative;
+    }
+
+    /* Row 1: intro text right-aligned, floated beside the ceramics */
+    .intro-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 2rem;
       align-items: center;
+      padding: 0 0 3rem;
+      margin-top: -6rem; /* pull up to overlap hero */
     }
-
-    .content-section.reverse {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .content-text { }
-
-    .content-text p {
+    .intro-row .spacer { /* left col is empty — image fills via hero */ }
+    .intro-text {
       font-family: 'slight-chance', sans-serif;
-      font-size: 0.72rem;
-      line-height: 1.8;
-      letter-spacing: 0.02em;
+      font-size: 0.68rem;
+      line-height: 1.85;
+      letter-spacing: 0.01em;
       color: #1a1a1a;
-      margin-bottom: 1.2rem;
     }
+    .intro-text p { margin-bottom: 1rem; }
+    .intro-text p:last-child { margin-bottom: 0; }
 
-    .content-text p:last-child { margin-bottom: 0; }
-
-    .content-image {
+    /* Row 2 + 3: two text blocks left, one image right */
+    .steps-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding-bottom: 3rem;
+    }
+    .steps-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .step-text {
+      font-family: 'slight-chance', sans-serif;
+      font-size: 0.68rem;
+      line-height: 1.85;
+      letter-spacing: 0.01em;
+      color: #1a1a1a;
+    }
+    .step-text p { margin-bottom: 0.5rem; }
+    .steps-col-right {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
-
-    .content-image img {
+    .steps-col-right img {
       width: 100%;
-      max-width: 320px;
+      max-width: 260px;
       height: auto;
       object-fit: contain;
-      border-radius: 4px;
     }
 
-    /* first section: text right, image left */
-    .content-section.img-left .content-image { order: -1; }
-    .content-section.img-left .content-text { order: 1; }
-
-    /* second + third sections: text left, image right */
-    .content-section.img-right .content-text { order: -1; }
-    .content-section.img-right .content-image { order: 1; }
-
-    /* ── DIVIDER ── */
-    .section-divider {
-      margin: 0 5%;
-      border: none;
-      border-top: 1px solid rgba(26,26,26,0.15);
-    }
-
-    /* ── CTA BUTTON ── */
+    /* ── CTA ── */
     .cta-wrap {
       display: flex;
       justify-content: center;
-      padding: 4rem 5% 5rem;
+      padding: 2rem 5% 4.5rem;
     }
-
     .cta-btn {
       font-family: 'slight-chance', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
       text-transform: lowercase;
       color: #1a1a1a;
       text-decoration: none;
-      padding: 0.9rem 3.5rem;
+      padding: 0.85rem 3.2rem;
       border: 1.5px solid #1a1a1a;
       border-radius: 999px;
       background: #dce8ed;
@@ -168,21 +185,17 @@
       border-radius: 999px; background: transparent; cursor: pointer;
     }
     .join-row button:hover { background: rgba(0,0,0,0.08); }
-
     @media (max-width: 480px) {
       footer { grid-template-columns: 1fr; gap: 1.8rem; padding: 2rem 5% 8rem; }
       .footer-flower { width: 52px; height: 52px; }
       .footer-brand-name { font-size: 1.5rem; }
-      .content-section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 5%; }
-      .content-section.img-left .content-image { order: 0; }
-      .content-section.img-left .content-text { order: 0; }
+      .intro-row { grid-template-columns: 1fr; margin-top: 1rem; }
+      .steps-row { grid-template-columns: 1fr; }
     }
     @media (min-width: 481px) and (max-width: 1024px) {
       footer { grid-template-columns: auto 1fr 1fr; gap: 2rem; }
       .footer-brand { grid-column: 1 / -1; }
     }
-    @media (min-width: 1920px) { .page-wrapper { max-width: 1100px; } }
-    @media (min-width: 2560px) { .page-wrapper { max-width: 1400px; } }
   </style>
 </head>
 <body>
@@ -201,44 +214,41 @@
     <!-- HERO -->
     <section class="hero-section">
       <h1 class="hero-title">how it works</h1>
-    </section>
-
-    <!-- SECTION 1: intro text left-aligned with image on right -->
-    <section class="content-section img-left">
-      <div class="content-image">
-        <!-- broken ceramics image is part of the bkg, so we leave this visually balanced -->
-      </div>
-      <div class="content-text">
-        <p>We use broken ceramics and ceramic waste collected from pottery studios based around London, and turn them into mosaics and create beautiful a range of products from them.</p>
-        <p>Not only are we open to commissions, we also offer a service to give a second life to your beloved broken ceramics.</p>
+      <div class="hero-image-wrap">
+        <img src="unit_8_web_how_it_works_bkg.png" alt="broken ceramics and mosaic vase">
       </div>
     </section>
 
-    <hr class="section-divider">
+    <!-- CONTENT -->
+    <div class="content-area">
 
-    <!-- SECTION 2: commission info left, product image right -->
-    <section class="content-section img-right">
-      <div class="content-text">
-        <p>Got an idea? Let us know!<br>
-        If you have a specific vision or creative direction, attach references, themes and requests at the checkout, and we will try best fit them to your liking.</p>
+      <!-- Row 1: empty left (ceramics image above covers it), text right -->
+      <div class="intro-row">
+        <div class="spacer"></div>
+        <div class="intro-text">
+          <p>We use broken ceramics and ceramic waste collected from pottery studios based around London, and turn them into mosaics and create beautiful a range of products from them.</p>
+          <p>Not only are we open to commissions, we also offer a service to give a second life to your beloved broken ceramics.</p>
+        </div>
       </div>
-      <div class="content-image">
-        <img src="unit_8_flower.png" alt="forget me not mosaic flower product">
-      </div>
-    </section>
 
-    <hr class="section-divider">
+      <!-- Row 2+3: two text steps left, olive tree image right -->
+      <div class="steps-row">
+        <div class="steps-col-left">
+          <div class="step-text">
+            <p>Got an idea? Let us know!</p>
+            <p>If you have a specific vision or creative direction, attach references, themes and requests at the checkout, and we will try best fit them to your liking.</p>
+          </div>
+          <div class="step-text">
+            <p>Drop them off and the rest is us.</p>
+            <p>Send us your nearest drop off location, we will provide a 305x305x305mm box where you can put up to 2kg of ceramics or any materials you would like to include. Any request of project or materials with dimensions exceeding the stated above, please contact us directly.</p>
+          </div>
+        </div>
+        <div class="steps-col-right">
+          <img src="unit_7_olive.png" alt="forget me not olive tree mosaic panel">
+        </div>
+      </div>
 
-    <!-- SECTION 3: drop off info left, mosaic panel image right -->
-    <section class="content-section img-right">
-      <div class="content-text">
-        <p>Drop them off and the rest is us.<br>
-        Send us your nearest drop off location, we will provide a 305x305x305mm box where you can put up to 2kg of ceramics or any materials you would like to include. Any request of project or materials with dimensions exceeding the stated above, please contact us directly.</p>
-      </div>
-      <div class="content-image">
-        <img src="unit_7_olive.png" alt="forget me not olive tree mosaic panel">
-      </div>
-    </section>
+    </div><!-- /content-area -->
 
     <!-- CTA -->
     <div class="cta-wrap">
