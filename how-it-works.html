@@ -15,16 +15,14 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'slight-chance', sans-serif; background: #f0e8e0; color: #1a1a1a; min-height: 100vh; }
-    .page-wrapper { max-width: 900px; margin: 0 auto; overflow: visible; }
-    @media (min-width: 1920px) { .page-wrapper { max-width: 1100px; } }
-    @media (min-width: 2560px) { .page-wrapper { max-width: 1400px; } }
+    body { font-family: 'slight-chance', sans-serif; background: #f0e8e0; color: #1a1a1a; }
+    .page-wrapper { max-width: 900px; margin: 0 auto; }
 
     /* ── NAVBAR ── */
     .navbar {
       position: fixed; top: 0; left: 50%; transform: translateX(-50%);
       z-index: 100; display: flex; justify-content: center;
-      gap: 0.8rem; padding: 1.4rem 5%; width: 100%; max-width: 900px;
+      padding: 1.4rem 5%; width: 100%; max-width: 900px;
     }
     .nav-links { display: flex; gap: 0.8rem; list-style: none; }
     .nav-links a {
@@ -36,118 +34,92 @@
     .nav-links a:hover { background: #c8d9e0; transform: translateY(-2px); }
     .nav-links a.active { background: #b0d2dc; }
 
-    /* ── HERO ── */
+    /* ── SECTION 1: hero image + intro text ── */
     .hero-section {
-      background: #f0e8e0;
-      position: relative;
-      overflow: visible;
+      padding-top: 5rem;
+      display: grid;
+      grid-template-columns: 58% 42%;
+      grid-template-rows: auto 1fr;
     }
 
-    .hero-img-col img {
-      display: block;
-      width: 90%;
-      margin-left: 15%;
-      margin-top: -5.5rem; /* bleed behind fixed navbar to page top */
-    }
-
-    .intro-text {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 1rem;
-      line-height: 1.75;
-      letter-spacing: 0.01em;
-      color: #1a1a1a;
-      text-align: justify;
-      padding: 2rem 5% 3rem;
-    }
-    .intro-text p { margin-bottom: 0.9rem; }
-    .intro-text p:last-child { margin-bottom: 0; }
-
+    /* Title spans full left column, above image */
     .hero-title {
+      grid-column: 1;
+      grid-row: 1;
       font-family: 'slight-chance', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 400;
       letter-spacing: -0.01em;
       color: #1a1a1a;
-      line-height: 1.05;
-      margin-bottom: 2rem;
+      padding: 1.5rem 0 0.5rem 5%;
     }
 
-    /* Title overlaps across both columns, top-left of hero */
-    .hero-title-wrap {
-      position: absolute;
-      top: 5.5rem;
-      left: 5%;
-      z-index: 2;
-    }
-    .hero-title-wrap h1 {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      color: #1a1a1a;
-      line-height: 1;
+    /* Image fills left column row 2 */
+    .hero-img {
+      grid-column: 1;
+      grid-row: 2;
+      width: 100%;
+      display: block;
     }
 
-    .intro-text {
+    /* Intro text sits right column, vertically centered in row 2 */
+    .hero-text {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      padding: 0 5% 2rem 4%;
+    }
+    .hero-text-inner {
       font-family: 'slight-chance', sans-serif;
       font-size: 0.78rem;
-      line-height: 1.75;
+      line-height: 1.8;
       letter-spacing: 0.01em;
       color: #1a1a1a;
       text-align: justify;
     }
-    .intro-text p { margin-bottom: 0.9rem; }
-    .intro-text p:last-child { margin-bottom: 0; }
+    .hero-text-inner p + p { margin-top: 1rem; }
 
-    /* ── STEPS SECTION ── */
+    /* ── SECTION 2: two text blocks + olive image ── */
     .steps-section {
-      background: #f0e8e0;
-      padding: 2rem 5% 3rem;
-    }
-
-    .steps-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
+      grid-template-columns: 55% 45%;
+      gap: 0;
+      padding: 3rem 0 2rem;
       align-items: start;
     }
 
-    .steps-col-left {
+    .steps-left {
+      padding: 0 4% 0 5%;
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
     }
 
-    .step-text {
+    .step h3 {
+      font-family: 'slight-chance', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .step p {
       font-family: 'slight-chance', sans-serif;
       font-size: 1rem;
       line-height: 1.75;
       letter-spacing: 0.01em;
-      color: #1a1a1a;
       text-align: justify;
     }
-    .step-text h3 {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 1.9rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.5rem;
-      text-align: left;
-    }
-    .step-text p { margin-bottom: 0.5rem; }
-    .step-text p:last-child { margin-bottom: 0; }
 
-    .steps-col-right {
+    .steps-right {
+      padding: 0 5% 0 2%;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      padding-top: 0.5rem;
     }
-    .steps-col-right img {
-      width: 80%;
-      max-width: 240px;
-      height: auto;
-      object-fit: contain;
+    .steps-right img {
+      width: 100%;
+      max-width: 260px;
+      display: block;
     }
 
     /* ── CTA ── */
@@ -155,7 +127,6 @@
       display: flex;
       justify-content: center;
       padding: 3rem 5% 4.5rem;
-      background: #f0e8e0;
     }
     .cta-btn {
       font-family: 'slight-chance', sans-serif;
@@ -164,12 +135,11 @@
       text-transform: lowercase;
       color: #1a1a1a;
       text-decoration: none;
-      padding: 0.85rem 3.5rem;
+      padding: 0.9rem 3.5rem;
       border: 1.5px solid #1a1a1a;
       border-radius: 999px;
       background: #dce8ed;
       transition: background 0.2s, transform 0.15s;
-      display: inline-block;
     }
     .cta-btn:hover { background: #c8d9e0; transform: translateY(-2px); }
 
@@ -202,25 +172,13 @@
       border-radius: 999px; background: transparent; cursor: pointer;
     }
     .join-row button:hover { background: rgba(0,0,0,0.08); }
-    @media (max-width: 480px) {
-      footer { grid-template-columns: 1fr; gap: 1.8rem; padding: 2rem 5% 8rem; }
-      .footer-flower { width: 52px; height: 52px; }
-      .footer-brand-name { font-size: 1.5rem; }
-      .hero-inner { grid-template-columns: 1fr; min-height: auto; }
-      .hero-text-col { padding: 1.5rem 5%; }
-      .steps-grid { grid-template-columns: 1fr; }
-    }
     @media (min-width: 481px) and (max-width: 1024px) {
       footer { grid-template-columns: auto 1fr 1fr; gap: 2rem; }
       .footer-brand { grid-column: 1 / -1; }
     }
-    @media (min-width: 1920px) {
-      .hero-title-wrap h1 { font-size: 3rem; }
-      .intro-text, .step-text { font-size: 0.88rem; }
-    }
+    @media (min-width: 1920px) { .page-wrapper { max-width: 1100px; } }
     @media (min-width: 2560px) {
-      .hero-title-wrap h1 { font-size: 4rem; }
-      .intro-text, .step-text { font-size: 1.1rem; }
+      .page-wrapper { max-width: 1400px; }
       footer { gap: 5rem; padding: 5rem 6%; }
       .footer-flower { width: 140px; height: 140px; }
       .footer-brand-name { font-size: 3.8rem; }
@@ -242,39 +200,32 @@
 
   <div class="page-wrapper">
 
-    <!-- HERO -->
+    <!-- SECTION 1 -->
     <section class="hero-section">
-      <div class="hero-title-wrap">
-        <h1>how it works</h1>
-      </div>
-      <div class="hero-img-col">
-        <img src="unit_8_web_how_it_works_bkg.png" alt="broken ceramics and mosaic vase">
-      </div>
-      <div class="intro-text">
-        <p>We use broken ceramics and ceramic waste collected from pottery studios based around London, and turn them into mosaics and create beautiful a range of products from them.</p>
-        <p>Not only are we open to commissions, we also offer a service to give a second life to your beloved broken ceramics.</p>
+      <h1 class="hero-title">how it works</h1>
+      <img class="hero-img" src="unit_8_web_how_it_works_bkg.png" alt="broken ceramics and mosaic vase">
+      <div class="hero-text">
+        <div class="hero-text-inner">
+          <p>We use broken ceramics and ceramic waste collected from pottery studios based around London, and turn them into mosaics and create beautiful a range of products from them.</p>
+          <p>Not only are we open to commissions, we also offer a service to give a second life to your beloved broken ceramics.</p>
+        </div>
       </div>
     </section>
 
-    <!-- STEPS -->
+    <!-- SECTION 2 -->
     <section class="steps-section">
-      <div class="steps-grid">
-
-        <div class="steps-col-left">
-          <div class="step-text">
-            <h3>Got an idea? Let us know!</h3>
-            <p>If you have a specific vision or creative direction, attach references, themes and requests at the checkout, and we will try best fit them to your liking.</p>
-          </div>
-          <div class="step-text">
-            <h3>Drop them off and the rest is us.</h3>
-            <p>Send us your nearest drop off location, we will provide a 305x305x305mm box where you can put up to 2kg of ceramics or any materials you would like to include. Any request of project or materials with dimensions exceeding the stated above, please contact us directly.</p>
-          </div>
+      <div class="steps-left">
+        <div class="step">
+          <h3>Got an idea? Let us know!</h3>
+          <p>If you have a specific vision or creative direction, attach references, themes and requests at the checkout, and we will try best fit them to your liking.</p>
         </div>
-
-        <div class="steps-col-right">
-          <img src="unit_7_olive.png" alt="forget me not olive tree mosaic panel">
+        <div class="step">
+          <h3>Drop them off and the rest is us.</h3>
+          <p>Send us your nearest drop off location, we will provide a 305x305x305mm box where you can put up to 2kg of ceramics or any materials you would like to include. Any request of project or materials with dimensions exceeding the stated above, please contact us directly.</p>
         </div>
-
+      </div>
+      <div class="steps-right">
+        <img src="unit_7_olive.png" alt="olive tree mosaic panel">
       </div>
     </section>
 
