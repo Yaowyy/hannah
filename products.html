@@ -86,17 +86,26 @@
 
     .product-card .card-title {
       font-family: 'slight-chance', sans-serif;
-      font-size: 0.9rem;
+      font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: 0.02em;
     }
 
     .product-card .card-desc {
       font-family: 'slight-chance', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       line-height: 1.7;
       letter-spacing: 0.01em;
       color: #444;
+      max-width: 70%;
+    }
+
+    .product-card .img-wrap {
+      cursor: pointer;
+    }
+
+    .product-card .img-wrap:hover img {
+      transform: scale(1.03);
     }
 
     /* ── CTA ── */
@@ -192,36 +201,36 @@
 
         <!-- 1: Coaster -->
         <div class="product-card">
-          <div class="img-wrap">
+          <a class="img-wrap" href="contact.html?subject=coaster">
             <img src="coaster.png" alt="mosaic coaster">
-          </div>
+          </a>
           <p class="card-title">Coasters</p>
           <p class="card-desc">120x120mm — made with broken ceramic mosaics. Please let us know about customisation preferences and material drop off at the checkout.</p>
         </div>
 
         <!-- 2: Photo frame -->
         <div class="product-card">
-          <div class="img-wrap">
+          <a class="img-wrap" href="contact.html?subject=frame">
             <img src="frame.png" alt="mosaic photo frame">
-          </div>
+          </a>
           <p class="card-title">Photo frame</p>
           <p class="card-desc">210x150mm — made with broken ceramics. Please let us know about your sizes &amp; preferences at the checkout.</p>
         </div>
 
         <!-- 3: Commissions -->
         <div class="product-card">
-          <div class="img-wrap">
+          <a class="img-wrap" href="contact.html?subject=commission">
             <img src="chair.png" alt="commission example">
-          </div>
+          </a>
           <p class="card-title">Commissions</p>
           <p class="card-desc">e.g. broken ceramic drop off &amp; upcycle, mosaic tiles, wall décor, 3d installations, etc.</p>
         </div>
 
         <!-- 4: Workshops -->
         <div class="product-card">
-          <div class="img-wrap">
+          <a class="img-wrap" href="contact.html?subject=workshop">
             <img src="workshop.png" alt="mosaic workshop">
-          </div>
+          </a>
           <p class="card-title">Workshops/events</p>
           <p class="card-desc">Enquire about upcoming mosaic workshop/socials.</p>
         </div>

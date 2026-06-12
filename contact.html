@@ -167,7 +167,10 @@
           <label for="subject">subject</label>
           <select id="subject">
             <option value="">select a topic</option>
+            <option value="coaster">custom coaster design</option>
+            <option value="frame">custom photo frame</option>
             <option value="commission">commission a piece</option>
+            <option value="workshop">workshop enquiry</option>
             <option value="repair">repair my ceramics</option>
             <option value="dropoff">drop off enquiry</option>
             <option value="general">general enquiry</option>
@@ -225,5 +228,13 @@
   </div>
 
 <script src="flower.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const subject = params.get('subject');
+  if (subject) {
+    const sel = document.getElementById('subject');
+    if (sel) sel.value = subject;
+  }
+</script>
 </body>
 </html>
