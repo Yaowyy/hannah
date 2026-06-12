@@ -37,10 +37,8 @@
     .nav-links a.active { background: #b0d2dc; }
 
     /* ── HERO ── */
-    /* The ceramics image has a black bg. We use mix-blend-mode: multiply
-       on a white background so the black becomes transparent. */
     .hero-section {
-      background: #ffffff;
+      background: #f0e8e0;
       position: relative;
       padding-top: 5.5rem; /* clear fixed navbar */
     }
@@ -58,7 +56,6 @@
     .hero-img-col img {
       display: block;
       width: 100%;
-      mix-blend-mode: multiply; /* black bg disappears on white */
     }
 
     .hero-text-col {
@@ -105,12 +102,6 @@
     }
     .intro-text p { margin-bottom: 0.9rem; }
     .intro-text p:last-child { margin-bottom: 0; }
-
-    /* Cream band below white hero — transition back to page bg */
-    .hero-fade {
-      height: 2rem;
-      background: linear-gradient(to bottom, #ffffff, #f0e8e0);
-    }
 
     /* ── STEPS SECTION ── */
     .steps-section {
@@ -270,9 +261,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Gradient transition from white back to cream -->
-    <div class="hero-fade"></div>
 
     <!-- STEPS -->
     <section class="steps-section">
