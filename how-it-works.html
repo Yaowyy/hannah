@@ -43,28 +43,24 @@
       overflow: visible;
     }
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 55% 45%;
-      align-items: center;
-    }
-
-    .hero-img-col {
-      position: relative;
-    }
     .hero-img-col img {
       display: block;
-      width: 110%;
-      margin-left: 3%;
+      width: 90%;
+      margin-left: 15%;
       margin-top: -5.5rem; /* bleed behind fixed navbar to page top */
     }
 
-    .hero-text-col {
-      padding: 0 5% 3rem 2%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    .intro-text {
+      font-family: 'slight-chance', sans-serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      letter-spacing: 0.01em;
+      color: #1a1a1a;
+      text-align: justify;
+      padding: 2rem 5% 3rem;
     }
+    .intro-text p { margin-bottom: 0.9rem; }
+    .intro-text p:last-child { margin-bottom: 0; }
 
     .hero-title {
       font-family: 'slight-chance', sans-serif;
@@ -74,7 +70,6 @@
       color: #1a1a1a;
       line-height: 1.05;
       margin-bottom: 2rem;
-      /* Title sits above the image col — achieved via absolute positioning */
     }
 
     /* Title overlaps across both columns, top-left of hero */
@@ -247,27 +242,17 @@
 
   <div class="page-wrapper">
 
-    <!-- HERO: white bg so multiply blend removes black from image -->
+    <!-- HERO -->
     <section class="hero-section">
-
-      <!-- Title floated top-left, overlapping image column -->
       <div class="hero-title-wrap">
         <h1>how it works</h1>
       </div>
-
-      <div class="hero-inner">
-        <!-- Left: ceramics + vase image, blend-multiplied onto white -->
-        <div class="hero-img-col">
-          <img src="ceramics.png" alt="broken ceramics and mosaic vase">
-        </div>
-
-        <!-- Right: intro paragraph, sits at bottom of image height -->
-        <div class="hero-text-col">
-          <div class="intro-text">
-            <p>We use broken ceramics and ceramic waste collected from pottery studios based around London, and turn them into mosaics and create beautiful a range of products from them.</p>
-            <p>Not only are we open to commissions, we also offer a service to give a second life to your beloved broken ceramics.</p>
-          </div>
-        </div>
+      <div class="hero-img-col">
+        <img src="ceramics.png" alt="broken ceramics and mosaic vase">
+      </div>
+      <div class="intro-text">
+        <p>We use broken ceramics and ceramic waste collected from pottery studios based around London, and turn them into mosaics and create beautiful a range of products from them.</p>
+        <p>Not only are we open to commissions, we also offer a service to give a second life to your beloved broken ceramics.</p>
       </div>
     </section>
 
