@@ -106,11 +106,23 @@
   </div>
 
   <script>
-    // "continue" sends them to whichever page originally redirected here
-    var origin = document.referrer;
-    if (origin && origin !== window.location.href) {
-      document.getElementById('btn-continue').href = origin;
+    // Derive the originating page from the query string, then referrer, then default to index.html
+    var params = new URLSearchParams(window.location.search);
+    var origin = params.get('from') || document.referrer;
+
+    // Strip to just the filename so relative links work
+    if (origin) {
+      try { origin = new URL(origin).pathname.split('/').pop() || 'index.html'; } catch(e) {}
     }
+    if (!origin || origin === 'mobile.html') origin = 'index.html';
+
+    var btn = document.getElementById('btn-continue');
+    btn.removeAttribute('href');
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      sessionStorage.setItem('allowMobile', '1');
+      window.location.assign(origin);
+    });
   </script>
 
 </body>

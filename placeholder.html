@@ -3,8 +3,9 @@
 <head>
   <script>
     (function(){
-      if(window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
-        window.location.assign("mobile.html");
+      if(sessionStorage.getItem("allowMobile") !== "1" &&
+         (window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent))){
+        window.location.assign("mobile.html?from=" + encodeURIComponent(location.pathname.split("/").pop() || "index.html"));
       }
     })();
   </script>
