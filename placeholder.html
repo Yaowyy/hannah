@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    (function(){
+      if(window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+        window.location.assign("mobile.html");
+      }
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>forget me not</title>
+  <link rel="stylesheet" href="https://use.typekit.net/qmj4lyf.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'slight-chance', sans-serif;
+      background: #f0e8e0; color: #1a1a1a;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 2rem;
+    }
+    .flower-wrap {
+      width: clamp(120px, 25vw, 220px);
+      margin-bottom: 2.5rem;
+      opacity: 0.85;
+    }
+    .flower-wrap img { width: 100%; height: auto; display: block; }
+    .placeholder-text {
+      font-family: 'slight-chance', sans-serif;
+      font-size: clamp(0.75rem, 1.8vw, 1rem);
+      line-height: 1.85; letter-spacing: 0.03em;
+      color: #444; max-width: 420px;
+    }
+    .back-link {
+      margin-top: 2rem;
+      font-family: 'slight-chance', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.04em;
+      color: #1a1a1a; text-decoration: none;
+      padding: 0.6rem 1.8rem; background: #dce8ed;
+      border-radius: 999px; transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .back-link:hover { background: #c8d9e0; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <div class="flower-wrap">
+    <img src="unit_8_flower.png" alt="forget me not flower">
+  </div>
+
+  <p class="placeholder-text">
+    thank you for exploring my project.<br>
+    this page is not covered in my presentation.
+  </p>
+
+  <a href="index.html" class="back-link">← back home</a>
+
+</body>
+</html>

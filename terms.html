@@ -1,241 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    (function(){
+      if(window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+        window.location.assign("mobile.html");
+      }
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>terms & conditions — forget me not</title>  <link rel="stylesheet" href="https://use.typekit.net/qmj4lyf.css">
+  <title>terms & conditions — forget me not</title>
+  <link rel="stylesheet" href="https://use.typekit.net/qmj4lyf.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'slight-chance', sans-serif;
-      background: #f0e8e0;
-      color: #1a1a1a;
-      min-height: 100vh;
-    }
-
-    .page-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
+    body { font-family: 'slight-chance', sans-serif; background: #f0e8e0; color: #1a1a1a; min-height: 100vh; }
+    .page-wrapper { max-width: 900px; margin: 0 auto; overflow: hidden; }
     @media (min-width: 1920px) { .page-wrapper { max-width: 1100px; } }
     @media (min-width: 2560px) { .page-wrapper { max-width: 1400px; } }
 
-    /* ── NAVBAR ── */
     .navbar {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-      padding: 1.4rem 5%;
-      width: 100%;
-      max-width: 900px;
+      position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+      z-index: 100; display: flex; justify-content: center;
+      gap: 0.8rem; padding: 1.4rem 5%; width: 100%; max-width: 900px;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 0.8rem;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 0.8rem; list-style: none; }
     .nav-links a {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      text-transform: lowercase;
-      color: #1a1a1a;
-      text-decoration: none;
-      padding: 0.6rem 1.8rem;
-      background: #dce8ed;
-      border-radius: 999px;
-      transition: background 0.2s, transform 0.15s;
-      white-space: nowrap;
+      font-family: 'slight-chance', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.04em; text-transform: lowercase; color: #1a1a1a;
+      text-decoration: none; padding: 0.6rem 1.8rem; background: #dce8ed;
+      border-radius: 999px; transition: background 0.2s, transform 0.15s; white-space: nowrap;
     }
-
-    .nav-links a:hover {
-      background: #c8d9e0;
-      transform: translateY(-2px);
-    }
-
+    .nav-links a:hover { background: #c8d9e0; transform: translateY(-2px); }
     @media (max-width: 480px) {
       .nav-links { gap: 0.4rem; }
-      .nav-links a { font-size: 0.58rem; padding: 0.5rem 1rem; }
+      .nav-links a { font-size: 0.58rem; padding: 0.5rem 0.9rem; }
     }
 
-    /* ── TERMS SECTION ── */
     .terms-section {
-      min-height: 100vh;
-      padding: 8rem 2rem 4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      min-height: 100vh; padding: 8rem 2rem 4rem;
+      display: flex; flex-direction: column; align-items: center;
     }
-
     .terms-card {
-      background: rgba(255,255,255,0.92);
-      border-radius: 2rem;
-      padding: 3rem 3.5rem;
-      max-width: 680px;
-      width: 100%;
+      background: rgba(255,255,255,0.92); border-radius: 2rem;
+      padding: 3rem 3.5rem; max-width: 680px; width: 100%;
     }
-
     .terms-card h1 {
       font-family: 'slight-chance', sans-serif;
       font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.5rem;
+      font-weight: 400; letter-spacing: 0.02em; margin-bottom: 0.5rem;
     }
-
-    .terms-card .last-updated {
-      font-size: 0.6rem;
-      color: #888;
-      letter-spacing: 0.04em;
-      margin-bottom: 2.5rem;
-    }
-
+    .terms-card .last-updated { font-size: 0.6rem; color: #888; letter-spacing: 0.04em; margin-bottom: 2.5rem; }
     .terms-card h2 {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: lowercase;
-      margin-top: 2rem;
-      margin-bottom: 0.6rem;
-      color: #1a1a1a;
+      font-family: 'slight-chance', sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: lowercase;
+      margin-top: 2rem; margin-bottom: 0.6rem; color: #1a1a1a;
     }
-
-    .terms-card p {
-      font-size: 0.75rem;
-      line-height: 1.9;
-      letter-spacing: 0.02em;
-      color: #333;
-      margin-bottom: 0.8rem;
-    }
-
+    .terms-card p { font-size: 0.75rem; line-height: 1.9; letter-spacing: 0.02em; color: #333; margin-bottom: 0.8rem; }
     .terms-card .highlight {
-      background: #dce8ed;
-      border-radius: 1rem;
-      padding: 1.2rem 1.5rem;
-      margin: 1.5rem 0;
+      background: #dce8ed; border-radius: 1rem; padding: 1.2rem 1.5rem; margin: 1.5rem 0;
     }
-
-    .terms-card .highlight p {
-      margin-bottom: 0;
-      font-size: 0.72rem;
-      color: #1a1a1a;
-    }
-
-    .terms-card a {
-      color: #1a1a1a;
-      text-decoration: underline;
-    }
-
+    .terms-card .highlight p { margin-bottom: 0; font-size: 0.72rem; color: #1a1a1a; }
+    .terms-card a { color: #1a1a1a; text-decoration: underline; }
     .terms-card a:hover { opacity: 0.6; }
+    .divider { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 2rem 0; }
 
-    .divider {
-      border: none;
-      border-top: 1px solid rgba(0,0,0,0.08);
-      margin: 2rem 0;
-    }
-
-    /* ── FOOTER ── */
     footer {
-      background: #dce8ed;
-      padding: 3rem 5%;
-      display: grid;
-      grid-template-columns: auto 1fr 1fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
+      background: #dce8ed; padding: 3rem 5%;
+      display: grid; grid-template-columns: auto 1fr 1fr 1fr;
+      gap: 2.5rem; align-items: start;
     }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .footer-flower {
-      width: 72px;
-      height: 72px;
-      object-fit: contain;
-    }
-
-    .footer-brand-name {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 2rem;
-      color: #1a1a1a;
-      line-height: 1;
-    }
-
+    .footer-brand { display: flex; align-items: center; gap: 1rem; }
+    .footer-flower { width: 72px; height: 72px; object-fit: contain; }
+    .footer-brand-name { font-family: 'slight-chance', sans-serif; font-size: 2rem; color: #1a1a1a; line-height: 1; }
     .footer-col h4 {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: lowercase;
-      margin-bottom: 0.9rem;
+      font-family: 'slight-chance', sans-serif; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: lowercase; margin-bottom: 0.9rem;
     }
-
     .footer-col ul { list-style: none; }
-
-    .footer-col ul li {
-      font-size: 0.65rem;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.4rem;
-      color: #333;
-    }
-
+    .footer-col ul li { font-size: 0.65rem; letter-spacing: 0.02em; margin-bottom: 0.4rem; color: #333; }
     .footer-col a { color: #333; text-decoration: none; }
     .footer-col a:hover { text-decoration: underline; }
-
-    .join-row {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-      align-items: center;
-    }
-
+    .join-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; align-items: center; }
     .join-row input {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 0.6rem;
-      border: none;
-      border-bottom: 1px solid #333;
-      background: transparent;
-      padding: 0.3rem 0;
-      flex: 1;
-      outline: none;
-      color: #333;
+      font-family: 'slight-chance', sans-serif; font-size: 0.6rem;
+      border: none; border-bottom: 1px solid #333; background: transparent;
+      padding: 0.3rem 0; flex: 1; outline: none; color: #333;
     }
-
     .join-row button {
-      font-family: 'slight-chance', sans-serif;
-      font-size: 0.6rem;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid #1a1a1a;
-      border-radius: 999px;
-      background: transparent;
-      cursor: pointer;
+      font-family: 'slight-chance', sans-serif; font-size: 0.6rem;
+      padding: 0.3rem 0.8rem; border: 1px solid #1a1a1a;
+      border-radius: 999px; background: transparent; cursor: pointer;
     }
-
     .join-row button:hover { background: rgba(0,0,0,0.08); }
-
     @media (max-width: 480px) {
       .terms-card { padding: 2rem 1.5rem; border-radius: 1.2rem; }
       footer { grid-template-columns: 1fr; gap: 1.8rem; padding: 2rem 5% 8rem; }
-      .footer-brand { grid-column: 1 / -1; }
       .footer-flower { width: 52px; height: 52px; }
       .footer-brand-name { font-size: 1.5rem; }
     }
-
     @media (min-width: 481px) and (max-width: 1024px) {
       footer { grid-template-columns: auto 1fr 1fr; gap: 2rem; }
       .footer-brand { grid-column: 1 / -1; }
@@ -244,18 +108,17 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html#about">about us</a></li>
-      <li><a href="index.html#products">products &amp; services</a></li>
+      <li><a href="how-it-works.html">how it works?</a></li>
+      <li><a href="products.html">products &amp; services</a></li>
       <li><a href="contact.html">contact us</a></li>
     </ul>
   </nav>
 
   <div class="page-wrapper">
 
-    <!-- TERMS -->
     <section class="terms-section">
       <div class="terms-card">
 
@@ -263,11 +126,11 @@
         <p class="last-updated">last updated: 2026</p>
 
         <div class="highlight">
-          <p>forget me not is a university project and the intellectual property of <strong>Hannah Chung</strong>, student at the <strong>University of the Arts London</strong>. all content, imagery, and design is created for academic purposes only. <strong>this website is not a real shop and is not taking orders or commissions.</strong></p>
+          <p>forget me not is a university project and the intellectual property of <strong>Hannah Chung</strong>, student at <strong>Chelsea College of Arts UAL</strong>. all content, imagery, and design is created for academic purposes only. <strong>this website is not a real shop and is not taking orders or commissions.</strong></p>
         </div>
 
         <h2>1. about this project</h2>
-        <p>forget me not is a student design project exploring circular economy principles through the repurposing of broken ceramic waste into mosaic artworks and products. this website was created as part of an academic brief at the University of the Arts London in 2026. it is a conceptual project and does not operate as a commercial business.</p>
+        <p>forget me not is a student design project exploring circular economy principles through the repurposing of broken ceramic waste into mosaic artworks and products. this website was created as part of an academic brief at Chelsea College of Arts UAL in 2026. it is a conceptual project and does not operate as a commercial business.</p>
 
         <h2>2. intellectual property</h2>
         <p>all content on this website — including but not limited to text, images, product photography, design, branding, and the forget me not name and logo — is the intellectual property of Hannah Chung © 2026. unauthorised reproduction, distribution, or use of any content is strictly prohibited.</p>
@@ -282,30 +145,26 @@
         <p>any personal information submitted via this website will not be stored, processed, or shared. all contact forms are for demonstration purposes only and do not send or collect real data.</p>
 
         <hr class="divider">
-
-        <p>© 2026 Hannah Chung — University of the Arts London. all rights reserved.</p>
+        <p>© 2026 Hannah Chung — Chelsea College of Arts UAL. all rights reserved.</p>
 
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
       <div class="footer-brand">
         <img class="footer-flower" src="unit_8_flower.png" alt="forget me not flower logo">
         <span class="footer-brand-name">forget<br>me not</span>
       </div>
-
       <div class="footer-col">
         <h4>useful information</h4>
         <ul>
           <li><a href="terms.html">terms and conditions</a></li>
-          <li><a href="#">privacy policy</a></li>
-          <li><a href="#">payments &amp; commissions</a></li>
-          <li><a href="#">drop off &amp; delivery</a></li>
-          <li><a href="#">returns</a></li>
+          <li><a href="placeholder.html">privacy policy</a></li>
+          <li><a href="placeholder.html">payments &amp; commissions</a></li>
+          <li><a href="placeholder.html">drop off &amp; delivery</a></li>
+          <li><a href="placeholder.html">returns</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>join us!</h4>
         <p style="font-size:0.65rem; margin-bottom:0.6rem; line-height:1.5;">sign up with your emails to recieve the lastest news, updates &amp; events from us!</p>
@@ -314,7 +173,6 @@
           <button>sign up</button>
         </div>
       </div>
-
       <div class="footer-col">
         <h4>contacts</h4>
         <ul>
@@ -325,7 +183,6 @@
     </footer>
 
   </div>
-
 
 <script src="flower.js"></script>
 </body>
