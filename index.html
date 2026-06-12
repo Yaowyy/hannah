@@ -93,9 +93,7 @@
       pointer-events: none;
     }
 
-    /* Content is absolutely placed over the frame opening.
-       The frame PNG opening sits roughly at:
-       top ~12%, bottom ~18%, left ~22%, right ~16% of the image */
+    /* Content is absolutely placed over the frame opening — user's adjusted values */
     .about-inner {
       position: absolute;
       top: 20%;
@@ -109,20 +107,40 @@
       justify-content: center;
       text-align: center;
       padding: 0.5rem 0;
+      cursor: default;
     }
 
     .about-inner h2 {
       font-family: 'slight-chance', sans-serif;
-      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
       font-weight: 400; letter-spacing: 0.02em; margin-bottom: 1rem;
+      transition: opacity 0.4s ease;
     }
     .about-inner p {
       font-family: 'slight-chance', sans-serif;
-      font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+      font-size: clamp(0.75rem, 1.3vw, 1rem);
       line-height: 1.85; letter-spacing: 0.02em; text-align: justify;
+      transition: opacity 0.4s ease;
     }
+
+    /* Button hidden by default, fades in on hover */
     .about-inner .cta-btn {
-      margin-top: 1.4rem;
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.2s ease, background 0.2s;
+      transform: translateY(6px);
+    }
+
+    /* On hover: text fades out, button fades in */
+    .about-inner:hover h2,
+    .about-inner:hover p {
+      opacity: 0;
+    }
+    .about-inner:hover .cta-btn {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     .cta-btn {
