@@ -16,7 +16,7 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'slight-chance', sans-serif; background: #f0e8e0; color: #1a1a1a; min-height: 100vh; }
-    .page-wrapper { max-width: 900px; margin: 0 auto; overflow: hidden; }
+    .page-wrapper { max-width: 900px; margin: 0 auto; overflow: visible; }
     @media (min-width: 1920px) { .page-wrapper { max-width: 1100px; } }
     @media (min-width: 2560px) { .page-wrapper { max-width: 1400px; } }
 
@@ -41,6 +41,7 @@
       background: #f0e8e0;
       position: relative;
       padding-top: 5.5rem; /* clear fixed navbar */
+      overflow: visible;
     }
 
     .hero-inner {
@@ -55,7 +56,9 @@
     }
     .hero-img-col img {
       display: block;
-      width: 100%;
+      width: 115%;
+      margin-top: -5.5rem; /* pull up behind navbar so image reaches screen top */
+      margin-left: -5%;
     }
 
     .hero-text-col {
@@ -249,7 +252,7 @@
       <div class="hero-inner">
         <!-- Left: ceramics + vase image, blend-multiplied onto white -->
         <div class="hero-img-col">
-          <img src="unit_8_web_how_it_works_bkg.png" alt="broken ceramics and mosaic vase">
+          <img src="ceramics.png" alt="broken ceramics and mosaic vase">
         </div>
 
         <!-- Right: intro paragraph, sits at bottom of image height -->
