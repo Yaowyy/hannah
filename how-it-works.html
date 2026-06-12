@@ -35,13 +35,109 @@
     }
     .nav-links a:hover { background: #c8d9e0; transform: translateY(-2px); }
     .nav-links a.active { background: #b0d2dc; }
-    @media (max-width: 480px) {
-      .nav-links { gap: 0.4rem; }
-      .nav-links a { font-size: 0.58rem; padding: 0.5rem 0.9rem; }
+
+    /* ── HERO SECTION ── */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      background-image: url('unit_8_web_how_it_works_bkg.png');
+      background-size: cover;
+      background-position: center top;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
     }
 
-    /* ── BLANK SECTION ── */
-    .blank-section { min-height: 100vh; }
+    .hero-title {
+      position: absolute;
+      top: 13%;
+      left: 5%;
+      font-family: 'slight-chance', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: #1a1a1a;
+      line-height: 1;
+      z-index: 2;
+    }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-section {
+      padding: 5rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .content-section.reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .content-text { }
+
+    .content-text p {
+      font-family: 'slight-chance', sans-serif;
+      font-size: 0.72rem;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      color: #1a1a1a;
+      margin-bottom: 1.2rem;
+    }
+
+    .content-text p:last-child { margin-bottom: 0; }
+
+    .content-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content-image img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    /* first section: text right, image left */
+    .content-section.img-left .content-image { order: -1; }
+    .content-section.img-left .content-text { order: 1; }
+
+    /* second + third sections: text left, image right */
+    .content-section.img-right .content-text { order: -1; }
+    .content-section.img-right .content-image { order: 1; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      margin: 0 5%;
+      border: none;
+      border-top: 1px solid rgba(26,26,26,0.15);
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 4rem 5% 5rem;
+    }
+
+    .cta-btn {
+      font-family: 'slight-chance', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 0.9rem 3.5rem;
+      border: 1.5px solid #1a1a1a;
+      border-radius: 999px;
+      background: #dce8ed;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .cta-btn:hover { background: #c8d9e0; transform: translateY(-2px); }
 
     /* ── FOOTER ── */
     footer {
@@ -72,15 +168,21 @@
       border-radius: 999px; background: transparent; cursor: pointer;
     }
     .join-row button:hover { background: rgba(0,0,0,0.08); }
+
     @media (max-width: 480px) {
       footer { grid-template-columns: 1fr; gap: 1.8rem; padding: 2rem 5% 8rem; }
       .footer-flower { width: 52px; height: 52px; }
       .footer-brand-name { font-size: 1.5rem; }
+      .content-section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 5%; }
+      .content-section.img-left .content-image { order: 0; }
+      .content-section.img-left .content-text { order: 0; }
     }
     @media (min-width: 481px) and (max-width: 1024px) {
       footer { grid-template-columns: auto 1fr 1fr; gap: 2rem; }
       .footer-brand { grid-column: 1 / -1; }
     }
+    @media (min-width: 1920px) { .page-wrapper { max-width: 1100px; } }
+    @media (min-width: 2560px) { .page-wrapper { max-width: 1400px; } }
   </style>
 </head>
 <body>
@@ -95,8 +197,55 @@
   </nav>
 
   <div class="page-wrapper">
-    <div class="blank-section"></div>
 
+    <!-- HERO -->
+    <section class="hero-section">
+      <h1 class="hero-title">how it works</h1>
+    </section>
+
+    <!-- SECTION 1: intro text left-aligned with image on right -->
+    <section class="content-section img-left">
+      <div class="content-image">
+        <!-- broken ceramics image is part of the bkg, so we leave this visually balanced -->
+      </div>
+      <div class="content-text">
+        <p>We use broken ceramics and ceramic waste collected from pottery studios based around London, and turn them into mosaics and create beautiful a range of products from them.</p>
+        <p>Not only are we open to commissions, we also offer a service to give a second life to your beloved broken ceramics.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 2: commission info left, product image right -->
+    <section class="content-section img-right">
+      <div class="content-text">
+        <p>Got an idea? Let us know!<br>
+        If you have a specific vision or creative direction, attach references, themes and requests at the checkout, and we will try best fit them to your liking.</p>
+      </div>
+      <div class="content-image">
+        <img src="unit_8_flower.png" alt="forget me not mosaic flower product">
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 3: drop off info left, mosaic panel image right -->
+    <section class="content-section img-right">
+      <div class="content-text">
+        <p>Drop them off and the rest is us.<br>
+        Send us your nearest drop off location, we will provide a 305x305x305mm box where you can put up to 2kg of ceramics or any materials you would like to include. Any request of project or materials with dimensions exceeding the stated above, please contact us directly.</p>
+      </div>
+      <div class="content-image">
+        <img src="unit_7_olive.png" alt="forget me not olive tree mosaic panel">
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <a href="products.html" class="cta-btn">Get started</a>
+    </div>
+
+    <!-- FOOTER -->
     <footer>
       <div class="footer-brand">
         <img class="footer-flower" src="unit_8_flower.png" alt="forget me not flower logo">
@@ -128,6 +277,7 @@
         </ul>
       </div>
     </footer>
+
   </div>
 
 <script src="flower.js"></script>
