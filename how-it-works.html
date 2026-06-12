@@ -40,25 +40,28 @@
     .hero-section {
       background: #f0e8e0;
       position: relative;
-      padding-top: 5.5rem; /* clear fixed navbar */
       overflow: visible;
+      /* Pull section up so it starts at top of page behind the fixed navbar */
+      margin-top: -5.5rem;
+      padding-top: 5.5rem;
     }
 
     .hero-inner {
       display: grid;
       grid-template-columns: 55% 45%;
       align-items: end;
-      min-height: 380px;
+      min-height: 480px;
     }
 
     .hero-img-col {
       position: relative;
     }
+    /* Image anchored to the very top of .hero-section (= top of page) */
     .hero-img-col img {
-      display: block;
-      width: 115%;
-      margin-top: -5.5rem; /* pull up behind navbar so image reaches screen top */
-      margin-left: -5%;
+      position: absolute;
+      top: -5.5rem;
+      left: 3%;
+      width: 110%;
     }
 
     .hero-text-col {
